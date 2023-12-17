@@ -24,6 +24,18 @@ print(Fore.YELLOW+'      -------------------------------------------------------
 #     percent = (bytes_downloaded / total_size)*100
 #     print('\r'+"▌" * int(percent)+ " " * (100-int(percent))+ "{}%".format(int(percent)),end='')
 
+# def getAllLinks(playList):
+#     allLinks = []
+#     youtubeLink = 'https://www.youtube.com'
+#     pl = Playlist(playList)
+#     for linkprefix in pl.parse_links():
+#         allLinks.append(youtubeLink + linkprefix)
+#     return allLinks
+
+# def downloadPlaylist(playlistLink):
+#     linkArray = getAllLinks(playlistLink)
+#     for link in linkArray:
+#         downloadVideo(link)
 
 question = [
     inquirer.List("Video-Type",message="What Type Of Video You Wand To Download", choices=["Single Video", "Playlist"]),
@@ -41,10 +53,11 @@ if a =='single video':
     except VideoUnavailable:
         print(Fore.RED+"Video not available")
 elif a =='playlist':
-    pl = Playlist(input(Fore.YELLOW+'\nEnter the URL of the playlist : '),on_progress_callback=on_progress)
+    pl = Playlist(input(Fore.YELLOW+'\nEnter the URL of the playlist : '))
     for video in pl.videos:
         try:
-            video.streams.get_highest_resolution().download("Videos")
+            # video.streams.get_highest_resolution().download("Videos")
+            print(video)
         except VideoUnavailable:
             print(Fore.RED+"Video not available")
 else:
