@@ -1,0 +1,4 @@
+inquirer
+pytube
+colorama
+pyfiglet
