@@ -37,14 +37,14 @@ a = usersChoice['Video-Type'].lower()
 if a =='single video':
     yt = YouTube(input(Fore.YELLOW+'\nEnter the URL of the video : '),on_progress_callback=on_progress)
     try:
-        yt.streams.get_highest_resolution().download()
+        yt.streams.get_highest_resolution().download("Videos")
     except VideoUnavailable:
         print(Fore.RED+"Video not available")
 elif a =='playlist':
     pl = Playlist(input(Fore.YELLOW+'\nEnter the URL of the playlist : '),on_progress_callback=on_progress)
     for video in pl.videos:
         try:
-            video.streams.get_highest_resolution().download()
+            video.streams.get_highest_resolution().download("Videos")
         except VideoUnavailable:
             print(Fore.RED+"Video not available")
 else:
