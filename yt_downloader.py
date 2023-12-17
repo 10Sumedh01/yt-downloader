@@ -56,8 +56,7 @@ elif a =='playlist':
     pl = Playlist(input(Fore.YELLOW+'\nEnter the URL of the playlist : '))
     for video in pl.videos:
         try:
-            # video.streams.get_highest_resolution().download("Videos")
-            print(video)
+            video.streams.get_highest_resolution().download("Videos")
         except VideoUnavailable:
             print(Fore.RED+"Video not available")
 else:
